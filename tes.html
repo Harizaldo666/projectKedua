@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <title>Galery666</title>
+    <style type="text/css">
+      body {
+        background-color: gray;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        background-position: center center;
+        background-size: cover;
+        transition: 0s;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+      }
+      .slider-container {
+        height: 70vh;
+        width: 70vh;
+        position: relative;
+        overflow: hidden;
+      }
+      .arrow {
+        position: fixed;
+        background-color: transparent;
+        color: #fff;
+        padding: 20px;
+        font-size: 30px;
+        border: 0px solid white;
+        top: 50%;
+        transform: tralateY(-50%);
+        cursor: pointer;
+      }
+
+      .arrow:focus {
+        outline: 0;
+      }
+
+      .left-arrow {
+        left: calc(15vw - 65px);
+      }
+
+      .right-arrow {
+        right: calc(15vw - 65px);
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div class="slider-container">
+      <img src="gambar/gambar1.jpg" width="100%" height="100%" id="gambar" />
+      <button class="arrow left-arrow" id="left" onclick="sebelum()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <button class="arrow right-arrow" id="right" onclick="sesudah()">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <script>
+      var nomor = 1;
+      var body = document.getElementById("body");
+
+      function berubah(angka) {
+        var lokasi = "gambar/gambar" + angka + ".jpg";
+        body.style.backgroundImage = "url('gambar/gambar" + angka + ".jpg')";
+        document.getElementById("gambar").src = lokasi;
+        return false;
+      }
+
+      function ganti(angka) {
+        nomor = angka;
+        berubah(angka);
+      }
+
+      function sebelum() {
+        nomor--;
+        if (nomor < 1) nomor = 8;
+        berubah(nomor);
+      }
+
+      function sesudah() {
+        nomor++;
+        if (nomor > 8) nomor = 1;
+        berubah(nomor);
+      }
+    </script>
+  </body>
+</html>
